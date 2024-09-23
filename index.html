@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insurance Mall</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --primary-color: #046381; /* Primary dark blue */
+        --secondary-color: #057b9f; /* Lighter blue */
+        --accent-color: #2a9fc3; /* Aqua blue */
+        --dark-color: #15262e; /* Very dark blue */
+        --light-color: #acd1e3; /* Light blue */
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav x-data="{ isOpen: false }" class="relative bg-white shadow">
+      <div class="container px-6 py-4 mx-auto">
+        <div class="lg:flex lg:items-center lg:justify-between">
+          <div class="flex items-center justify-between">
+            <!-- Logo Text -->
+            <a href="#">
+              <span
+                class="text-3xl font-bold text-[var(--primary-color)] tracking-wide hover:text-[var(--secondary-color)] transition duration-300 ease-in-out"
+                >INSURANCEMALL</span
+              >
+            </a>
+
+            <!-- Mobile menu button -->
+            <div class="flex lg:hidden">
+              <button
+                x-cloak
+                @click="isOpen = !isOpen"
+                type="button"
+                class="text-[var(--dark-color)] hover:text-[var(--secondary-color)] focus:outline-none focus:text-[var(--secondary-color)]"
+                aria-label="toggle menu"
+              >
+                <svg
+                  x-show="!isOpen"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 8h16M4 16h16"
+                  />
+                </svg>
+
+                <svg
+                  x-show="isOpen"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+          <div
+            x-cloak
+            :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
+            class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center"
+          >
+            <div
+              class="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8"
+            >
+              <a
+                href="#home"
+                class="px-3 py-2 mx-3 mt-2 text-[var(--dark-color)] transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[var(--light-color)]"
+                >Home</a
+              >
+              <a
+                href="#about"
+                class="px-3 py-2 mx-3 mt-2 text-[var(--dark-color)] transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[var(--light-color)]"
+                >About Us</a
+              >
+              <a
+                href="#services"
+                class="px-3 py-2 mx-3 mt-2 text-[var(--dark-color)] transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[var(--light-color)]"
+                >Services</a
+              >
+              <a
+                href="#contact"
+                class="px-3 py-2 mx-3 mt-2 text-[var(--dark-color)] transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[var(--light-color)]"
+                >Contact Us</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Page -->
+    <div
+      id="home"
+      class="items-center w-10/12 grid-cols-2 mx-auto overflow-x-hidden lg:grid md:py-14 lg:py-24 xl:py-14 lg:mt-3 xl:mt-5"
+      data-aos="fade-right"
+      data-aos-duration="800"
+    >
+      <div class="pr-2 md:mb-14 py-14 md:py-0">
+        <h1
+          class="text-3xl font-semibold text-[var(--primary-color)] xl:text-5xl lg:text-3xl"
+        >
+          <span class="block w-full">Secure Your Future </span> with
+          Comprehensive Insurance Plans
+        </h1>
+        <p class="py-4 text-lg text-gray-500 2xl:py-8 md:py-6 2xl:pr-5">
+          Expert advice and customized insurance options designed to meet your
+          unique needs, with access to top plans from the most trusted providers
+          in the industry. Get the coverage you deserve.
+        </p>
+        <div class="mt-4">
+          <a
+            href="#services"
+            class="px-5 py-3 text-lg tracking-wider text-white bg-[var(--secondary-color)] rounded-lg md:px-8 hover:bg-[var(--accent-color)] group"
+            ><span>Explore More</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pb-10 overflow-hidden md:p-10 lg:p-0 sm:pb-0">
+        <img
+          id="heroImg1"
+          class="transition-all duration-300 ease-in-out hover:scale-105 lg:w-full sm:mx-auto sm:w-4/6 sm:pb-12 lg:pb-0"
+          src="./assets/4412.jpg"
+          alt="Awesome hero page image"
+          width="500"
+          height="488"
+        />
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-[var(--dark-color)] text-white">
+      <div
+        class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
+      >
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-3xl font-bold sm:text-4xl">
+            Explore Our Insurance Plans
+          </h2>
+
+          <p class="mt-4 text-gray-300">
+            We offer a wide range of insurance plans tailored to fit your unique
+            needs. Whether you’re looking for health, life, auto, or home
+            coverage, we’ve got you covered with comprehensive solutions from
+            trusted providers.
+          </p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- LIC's Jeevan Kiran Card -->
+          <a
+            class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-[var(--accent-color)] hover:shadow-[var(--accent-color)]"
+            href="#"
+          >
+            <h2 class="mt-4 text-xl font-bold text-white">
+              LIC's Jeevan Kiran
+            </h2>
+            <p class="mt-2 text-sm text-gray-300">
+              A comprehensive term insurance plan with a return of premiums on
+              maturity, providing financial protection during the policy term.
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-[var(--accent-color)]">
+              Features:
+            </h3>
+            <ul class="mt-1 text-sm text-gray-300 font-medium">
+              <li>• Comprehensive Term Insurance Plan</li>
+              <li>
+                • Death Benefit: Sum Assured + 105% of premiums (Regular) or
+                125% (Single Premium)
+              </li>
+              <li>• Maturity Benefit: Return of all premiums paid</li>
+              <li>
+                • Surrender: After 2 years (Regular Premium), anytime (Single
+                Premium)
+              </li>
+              <li>• Loan: Available after 2 years</li>
+              <li>• Sum Assured: Min ₹15,00,000</li>
+            </ul>
+          </a>
+
+          <!-- LIC's Jeevan Utsav Card -->
+          <a
+            class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-[var(--accent-color)] hover:shadow-[var(--accent-color)]"
+            href="#"
+          >
+            <h2 class="mt-4 text-xl font-bold text-white">
+              LIC's Jeevan Utsav
+            </h2>
+            <p class="mt-2 text-sm text-gray-300">
+              A whole life insurance plan offering regular income and financial
+              security with guaranteed additions and annual survival benefits.
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-[var(--accent-color)]">
+              Features:
+            </h3>
+            <ul class="mt-1 text-sm text-gray-300 font-medium">
+              <li>• Non-Linked, Whole Life Insurance Plan</li>
+              <li>• Death Benefit: Sum Assured + Guaranteed Additions</li>
+              <li>• Survival Benefit: 10% of Sum Assured annually</li>
+              <li>• Surrender: After 2 years</li>
+              <li>• Loan: Available after 2 years</li>
+              <li>• Sum Assured: Min ₹5,00,000</li>
+            </ul>
+          </a>
+
+          <!-- LIC's Amritbaal Card -->
+          <a
+            class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-[var(--accent-color)] hover:shadow-[var(--accent-color)]"
+            href="#"
+          >
+            <h2 class="mt-4 text-xl font-bold text-white">LIC's Amritbaal</h2>
+            <p class="mt-2 text-sm text-gray-300">
+              A savings life insurance plan designed to meet the higher
+              educational and other needs of children, offering guaranteed
+              returns.
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-[var(--accent-color)]">
+              Features:
+            </h3>
+            <ul class="mt-1 text-sm text-gray-300 font-medium">
+              <li>• Non-Linked, Savings Plan for Children</li>
+              <li>• Death Benefit: Sum Assured + Guaranteed Addition</li>
+              <li>• Maturity Benefit: Sum Assured + Guaranteed Addition</li>
+              <li>• Surrender: After 2 years (Regular), anytime (Single)</li>
+              <li>
+                • Loan: Available after 2 years (Regular), 3 months (Single)
+              </li>
+              <li>• Sum Assured: Min ₹2,00,000</li>
+            </ul>
+          </a>
+
+          <!-- LIC's New Jeevan Anand Card -->
+          <a
+            class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-[var(--accent-color)] hover:shadow-[var(--accent-color)]"
+            href="#"
+          >
+            <h2 class="mt-4 text-xl font-bold text-white">
+              LIC's New Jeevan Anand
+            </h2>
+            <p class="mt-2 text-sm text-gray-300">
+              A combination of endowment and whole life assurance, ensuring
+              financial protection during and after the policy term.
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-[var(--accent-color)]">
+              Features:
+            </h3>
+            <ul class="mt-1 text-sm text-gray-300 font-medium">
+              <li>• Combination of Endowment and Whole Life Assurance</li>
+              <li>
+                • Death Benefit: 1.25 times Sum Assured + Bonus + Final Bonus
+              </li>
+              <li>• Maturity Benefit: Sum Assured + Bonus + Final Bonus</li>
+              <li>• Surrender: After 2 years</li>
+              <li>• Loan: Available after 2 years</li>
+              <li>• Sum Assured: Min ₹1,00,000</li>
+            </ul>
+          </a>
+
+          <!-- LIC's Jeevan Lakshya Card -->
+          <a
+            class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-[var(--accent-color)] hover:shadow-[var(--accent-color)]"
+            href="#"
+          >
+            <h2 class="mt-4 text-xl font-bold text-white">
+              LIC's Jeevan Lakshya
+            </h2>
+            <p class="mt-2 text-sm text-gray-300">
+              A limited premium endowment plan offering income benefits to the
+              family in the event of the policyholder’s death.
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-[var(--accent-color)]">
+              Features:
+            </h3>
+            <ul class="mt-1 text-sm text-gray-300 font-medium">
+              <li>• Limited Payment Endowment Plan</li>
+              <li>
+                • Death Benefit: Sum Assured + Bonus + Final Additional Bonus
+              </li>
+              <li>• Income Benefit: 10% of Sum Assured annually</li>
+              <li>• Surrender: After 2 years</li>
+              <li>• Loan: Available after 2 years</li>
+              <li>• Sum Assured: Min ₹1,00,000</li>
+            </ul>
+          </a>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="#"
+            class="inline-block rounded bg-[var(--accent-color)] px-12 py-3 text-sm font-medium text-white transition hover:bg-[var(--secondary-color)] focus:outline-none focus:ring focus:ring-yellow-400"
+          >
+            Find the Right Insurance for You — Get Started Today!
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <div class="text-center p-8">
+      <h2 class="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+        Achievements in Insurance Excellence
+      </h2>
+
+      <div class="flex flex-wrap items-center mt-20 text-center">
+        <div class="w-full md:w-3/5 lg:w-1/2 px-4">
+          <img
+            src="./assets/bhimaRatna (1).jpeg"
+            alt="gem"
+            class="inline-block rounded shadow-lg border border-merino-400 w-2/3"
+          />
+        </div>
+        <div
+          class="w-full md:w-2/5 lg:w-1/2 px-4 text-center md:text-left lg:pl-12"
+        >
+          <h3 class="font-bold mt-8 text-xl md:mt-0 sm:text-2xl">
+            Bima Ratna Award
+            <br />
+            <span class="opacity-40 text-base"
+              >For Exemplary Service in the Insurance Sector</span
+            >
+          </h3>
+          <p class="sm:text-lg mt-6">
+            Proudly awarded the prestigious Bima Ratna Award for outstanding
+            contributions to the insurance industry. This honor is a testament
+            to our client’s unwavering dedication, providing tailored insurance
+            solutions that meet the needs of customers with the highest level of
+            service and integrity.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center mt-20 text-center">
+        <div class="w-full md:w-3/5 lg:w-1/2 px-4">
+          <img
+            src="./assets/mediclaim (1).jpeg"
+            alt="project members"
+            class="inline-block rounded shadow-lg border border-merino-400 w-2/3"
+          />
+        </div>
+        <div
+          class="w-full md:w-2/5 lg:w-1/2 px-4 md:order-first text-center md:text-left lg:pr-12"
+        >
+          <h3 class="font-bold mt-8 text-xl md:mt-0 sm:text-2xl">
+            Record-Breaking Mediclaim Achievement
+            <br />
+            <span class="opacity-40 text-base"
+              >Largest Mediclaim Processed in Record Time</span
+            >
+          </h3>
+          <p class="sm:text-lg mt-6">
+            Recognized for processing the largest Mediclaim in the shortest
+            period, showcasing efficiency and commitment to client welfare. This
+            award highlights our client's ability to deliver exceptional results
+            in high-pressure situations, ensuring timely support for those in
+            need.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section id="about" class="bg-gray-100">
+      <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+          <div class="max-w-lg">
+            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              About Us
+            </h2>
+            <p class="mt-4 text-gray-600 text-lg">
+              At
+              <span class="text-[var(--primary-color)] font-semibold"
+                >Insurance Mall</span
+              >, we specialize in helping individuals and families find the
+              right insurance coverage from top providers. With years of
+              industry experience, we offer expert guidance and personalized
+              solutions tailored to your unique needs.
+            </p>
+            <div class="mt-8">
+              <a
+                href="#contact"
+                class="text-[var(--accent-color)] hover:text-[var(--secondary-color)] font-medium"
+                >Contact us to know more <span class="ml-2">&#8594;</span></a
+              >
+            </div>
+          </div>
+          <div class="mt-12 md:mt-0">
+            <img
+              src="https://images.unsplash.com/photo-1531973576160-7125cd663d86"
+              alt="About Us Image"
+              class="object-cover rounded-lg shadow-md"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="text-gray-600 body-font relative">
+      <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
+        <!-- Map Section -->
+        <div
+          class="lg:w-2/3 md:w-1/2 bg-[var(--light-color)] rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative"
+        >
+          <iframe
+            width="100%"
+            height="100%"
+            class="absolute inset-0"
+            frameborder="0"
+            title="map"
+            marginheight="0"
+            marginwidth="0"
+            scrolling="no"
+            src="https://maps.google.com/maps?q=18.60877904117524,73.79917651001207&hl=en&z=14&output=embed"
+            style="filter: contrast(1.2) opacity(0.4)"
+          ></iframe>
+          <div class="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+            <!-- Address Section -->
+            <div class="lg:w-1/2 px-6">
+              <h2
+                class="title-font font-semibold text-gray-900 tracking-widest text-xs"
+              >
+                ADDRESS
+              </h2>
+              <p class="mt-1">
+                Rajendra Sarjerao Bagade, 23 Sukhwani Enclave, Pimprigaon, Pune,
+                Maharashtra
+              </p>
+            </div>
+            <!-- Email and Phone Section -->
+            <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+              <h2
+                class="title-font font-semibold text-gray-900 tracking-widest text-xs"
+              >
+                EMAIL
+              </h2>
+              <a
+                href="mailto:rajendrabagade@yahoo.com"
+                class="text-red-500 leading-relaxed"
+                >rajendrabagade@yahoo.com</a
+              >
+              <h2
+                class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4"
+              >
+                PHONE
+              </h2>
+              <a href="tel:+919673334718" class="leading-relaxed block"
+                >+91 9673334718</a
+              >
+              <a href="tel:+918329840247" class="leading-relaxed block"
+                >+91 8329840247</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback Form Section -->
+        <div
+          class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0"
+        >
+          <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">
+            Contact Us
+          </h2>
+          <p class="leading-relaxed mb-5 text-gray-600">
+            Please feel free to reach out to us for any insurance-related
+            queries or assistance.
+          </p>
+
+          <div class="relative mb-4">
+            <label for="name" class="leading-7 text-sm text-gray-600"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+          </div>
+
+          <div class="relative mb-4">
+            <label for="email" class="leading-7 text-sm text-gray-600"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+          </div>
+
+          <!-- Phone Number Field -->
+          <div class="relative mb-4">
+            <label for="phone" class="leading-7 text-sm text-gray-600"
+              >Phone Number</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              pattern="[0-9]{10}"
+              class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+          </div>
+
+          <div class="relative mb-4">
+            <label for="message" class="leading-7 text-sm text-gray-600"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+            ></textarea>
+          </div>
+
+          <button
+            class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
+          >
+            Submit
+          </button>
+
+          <p class="text-xs text-gray-500 mt-3">
+            We are here to help you with all your insurance needs. Feel free to
+            ask us anything.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div
+      class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
+    >
+      <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="sm:col-span-2">
+          <a
+            href="/"
+            aria-label="Go home"
+            title="Insurance Mall"
+            class="inline-flex items-center"
+          >
+            <svg
+              class="w-8 text-[var(--accent-color)]"
+              viewBox="0 0 24 24"
+              stroke-linejoin="round"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
+              stroke="currentColor"
+              fill="none"
+            >
+              <rect x="3" y="1" width="7" height="12"></rect>
+              <rect x="3" y="17" width="7" height="6"></rect>
+              <rect x="14" y="1" width="7" height="6"></rect>
+              <rect x="14" y="11" width="7" height="12"></rect>
+            </svg>
+            <span
+              class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
+              >Insurance Mall</span
+            >
+          </a>
+          <div class="mt-6 lg:max-w-sm">
+            <p class="text-sm text-gray-800">
+              Welcome to Insurance Mall, where we provide a wide range of
+              insurance services to protect what matters most to you. With
+              tailored solutions and trusted providers, we ensure you get the
+              best coverage.
+            </p>
+            <p class="mt-4 text-sm text-gray-800">
+              Contact us to discuss your specific insurance needs, and we'll
+              help you find the right plan for you and your family.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-2 text-sm">
+          <p class="text-base font-bold tracking-wide text-gray-900">
+            Contacts
+          </p>
+          <div class="flex">
+            <p class="mr-1 text-gray-800">Phone:</p>
+            <a
+              href="tel:+919673334718"
+              aria-label="Phone"
+              title="Phone"
+              class="transition-colors duration-300 text-[var(--accent-color)] hover:text-[var(--secondary-color)]"
+              >+91 9673334718</a
+            >
+          </div>
+          <div class="flex">
+            <p class="mr-1 text-gray-800">Phone:</p>
+            <a
+              href="tel:+918329840247"
+              aria-label="Phone"
+              title="Phone"
+              class="transition-colors duration-300 text-[var(--accent-color)] hover:text-[var(--secondary-color)]"
+              >+91 8329840247</a
+            >
+          </div>
+          <div class="flex">
+            <p class="mr-1 text-gray-800">Email:</p>
+            <a
+              href="mailto:rajendrabagade@yahoo.com"
+              aria-label="Email"
+              title="Email"
+              class="transition-colors duration-300 text-[var(--accent-color)] hover:text-[var(--secondary-color)]"
+              >rajendrabagade@yahoo.com</a
+            >
+          </div>
+          <div class="flex">
+            <p class="mr-1 text-gray-800">Address:</p>
+            <a
+              href="https://goo.gl/maps/XycCG5NsCzq"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Our address"
+              title="Our address"
+              class="transition-colors duration-300 text-[var(--accent-color)] hover:text-[var(--secondary-color)]"
+              >23 Sukhwani Enclave, Pimprigaon, Pune, Maharashtra</a
+            >
+          </div>
+        </div>
+        <div>
+          <span class="text-base font-bold tracking-wide text-gray-900"
+            >Social</span
+          >
+          <div class="flex items-center mt-1 space-x-3">
+            <a
+              href="#"
+              class="text-gray-500 transition-colors duration-300 hover:text-[var(--accent-color)]"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 transition-colors duration-300 hover:text-[var(--accent-color)]"
+            >
+              <svg viewBox="0 0 30 30" fill="currentColor" class="h-6">
+                <circle cx="15" cy="15" r="4"></circle>
+                <path
+                  d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10 C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1 c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 transition-colors duration-300 hover:text-[var(--accent-color)]"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <p class="mt-4 text-sm text-gray-500">
+            Follow us on social media to stay updated on the latest insurance
+            offers and policies.
+          </p>
+        </div>
+      </div>
+      <div
+        class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row"
+      >
+        <p class="text-sm text-gray-600">
+          © Copyright 2024 Insurance Mall. All rights reserved.
+        </p>
+        <ul
+          class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row"
+        >
+          <li>
+            <a
+              href="/"
+              class="text-sm text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
+              >F.A.Q</a
+            >
+          </li>
+          <li>
+            <a
+              href="/"
+              class="text-sm text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
+              >Privacy Policy</a
+            >
+          </li>
+          <li>
+            <a
+              href="/"
+              class="text-sm text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
+              >Terms & Conditions</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
